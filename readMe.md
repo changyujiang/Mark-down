@@ -27,4 +27,4 @@
 
 ## Square
 
-## aribnb
+## Airbnb
