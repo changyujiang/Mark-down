@@ -5,7 +5,7 @@
     * 深入理解Java虚拟机：JVM高级特性与最佳实践
     * HotSpot实战
 * Concurrent
-    * 实战java高并发程序设计 :full_moon_with_face:
+    * 实战java高并发程序设计 :full_moon_with_face:
     * Java并发编程实战
     * java多线程编程核心技术
 * Effective Java
