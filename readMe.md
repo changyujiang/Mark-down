@@ -1,3 +1,3 @@
-## [interview question collection](interviews.md)
+## [Interview question collection](interviews.md)
 
-## [book list](bookList.md)
+## [Book list](booklist.md)
