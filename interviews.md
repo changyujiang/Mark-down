@@ -32,3 +32,6 @@
 - 熟悉Unix/Linux/Win32环境下编程，并有相关开发经验，熟练使用调试工具，并熟悉Perl，Python，shell等脚本语言
 - 熟悉网络编程和多线程编程，对TCP/IP，HTTP等网络协议有很深的理解，并了解XML和HTML语言； 
 - 热衷于数据库技术，能够熟练编写SQL脚本，有MySql或Oracle应用开发经验
+
+## Cisco ServiceNow
+- [内推](http://www.1point3acres.com/bbs/thread-286494-1-1.html)
