@@ -92,12 +92,12 @@ public class SelectionSort {
 > Given an array stored in stack1, how to sort the numbers by using additional two stacks? What if one additional 
 stack can be use?
 
-Stack1 || 3 4 2     int global_min = 1
-Stack2 || 1 
-Stack3 || 
+Stack1 || 3 4 2     int global_min = 1  
+Stack2 || 1  
+Stack3 ||  
 
 Solution for two stacks:
-    1. stack2 can be used as buffer
-    2. stack3 can be used to store the final result
-    3. maintain a global_min
+1. stack2 can be used as buffer
+2. stack3 can be used to store the final result
+3. maintain a global_min
     
