@@ -14,13 +14,13 @@
     * combined with system design
 
 > 做题要求
-A complete answer will include the following:
-1. Document your assumption
-2. Explain your approach and how you intent to solve the problem
-3. Provide code comment where applicable
-4. explain the big-O complexity of your solution. justify your answer
-5. indentity any additional data structure you used and justify why you used them.
-6. only provide your best answer to each part of the question.
+> A complete answer will include the following:
+> 1. Document your assumption
+> 2. Explain your approach and how you intent to solve the problem
+> 3. Provide code comment where applicable
+> 4. explain the big-O complexity of your solution. justify your answer
+> 5. indentity any additional data structure you used and justify why you used them.
+> 6. only provide your best answer to each part of the question.
 
 ### Q1 Selection sort
 
@@ -87,3 +87,17 @@ public class SelectionSort {
 	  // space: we do it in-place O(1)
 }
 ```
+
+### Q1.1 Use stack to simulate selection sort
+> Given an array stored in stack1, how to sort the numbers by using additional two stacks? What if one additional 
+stack can be use?
+
+Stack1 || 3 4 2     int global_min = 1
+Stack2 || 1 
+Stack3 || 
+
+Solution for two stacks:
+    1. stack2 can be used as buffer
+    2. stack3 can be used to store the final result
+    3. maintain a global_min
+    
