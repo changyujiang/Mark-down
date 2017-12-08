@@ -1,8 +1,10 @@
-## Advanced 1 Two Pointers
+## Advanced 1 Minimal # of comparison
 
 * Table of Content
     * 隔板题(Two/N pointers)
-    * Minimize #comparsion
+    * Minimize # of comparison (CLRS)
+        * find largest and smallest
+        * find largest and second largest
     * 剥洋葱
     * BFS print binary tree
     * LCA
