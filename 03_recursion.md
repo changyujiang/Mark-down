@@ -433,3 +433,214 @@ public class ReverseInPairs {
 }
 ```
 
+
+
+### S4 Recursion 与 String的结合
+
+#### Q4.1 Reverse a string using recursion
+
+abcd -> dcba
+
+#### Q4.2 String Abbreviation Matching 
+
+A word such as "book" can be abbreviated to 4, 1o1k, b3, b2k, etc. Given a string and an abbreviation, return if the string matches the abbreviation. Assume the original string only contains alphabetic characters. For example: "s11d" matches "sophisticated"
+
+```java
+package laicode.class10.recursion2;
+
+/*String Abbreviation Matching
+ Word “book” can be abbreviated to 4, b3, b2k, etc. Given a string and an 
+ abbreviation, return if the string matches the abbreviation.
+
+ Assumptions:
+ The original string only contains alphabetic characters.
+ Both input and pattern are not null.
+
+ Examples:
+ pattern “s11d” matches input “sophisticated” since “11” matches eleven 
+ chars “ophisticate”.*/
+
+public class StringAbbreviationMatching {
+	// 0. key point
+	// match a string and abbreviation
+	// return a boolean
+
+	// 1. assumption
+	// string only contains alphabetic characters
+	// both are not null
+	// length >= 0
+
+	// 2. approach
+	// recursion
+	// case1: pattern.charAt(i) == 'a-zA-Z', check with input.charAt(j)
+	// case2: pattern.charAt(i) == '0-9', read the number and move pointers on
+	// input
+
+	// 3. data structure
+
+	// 4. comment
+
+	// 5. big o complexity
+	// Time: O(n)
+	// Space: O(m)
+	public boolean match(String input, String pattern) {
+		// assumption: not null
+		// corner case
+		if (input.length() == 0 || pattern.length() == 0) {
+			return input.length() == 0 && pattern.length() == 0 ? true : false;
+		}
+
+		// pointers for each string
+		int p0 = 0;
+		int p1 = 0;
+		return match(input, pattern, p0, p1);
+	}
+
+	private boolean match(String input, String pattern, int i, int j) {
+		// base case
+		if (i == input.length() && j == pattern.length()) {
+			return true;
+		}
+		if (i >= input.length() || j >= pattern.length()) {
+			return false;
+		}
+
+		// case 1
+		// not a digit
+		if (pattern.charAt(j) > '9' || pattern.charAt(j) < '0') {
+			if (pattern.charAt(j) == input.charAt(i)) {
+				return match(input, pattern, i + 1, j + 1);
+			}
+			return false;
+		}
+
+		// case2
+		int num = 0;
+		while (j < pattern.length() && pattern.charAt(j) <= '9'
+				&& pattern.charAt(j) >= '0') {
+			num = num * 10 + pattern.charAt(j) - '0';
+			j++;
+		}
+		return match(input, pattern, i + num, j);
+	}
+}
+
+```
+
+
+
+### S5 Recursion 与 Tree的结合: 第一类从下往上返值
+
+* Binary tree 往往是最常见的，和recursion 结合最紧密的面试题目类型。
+
+* Reasons:
+
+  * 每层的node具备的性质，传递的值和下一层的性质往往一致。比较容易定义 recursion rule。
+
+  * Base case (generally): null pointer under leaf node (sometimes, left node)
+
+  * E.g. int getHeight (Node root)
+
+  * E.g. 统计tree中有多少个node？
+
+    ![image](https://user-images.githubusercontent.com/20658123/33808358-b2dc3fe4-dd99-11e7-82d2-220529f11203.png)
+
+
+
+ #### Q5.1 getHeight
+
+```java
+public int getHeight(TreeNode root) {
+  //base case
+  if (root == null) {
+    return 0;
+  }
+  
+  int left = getHeight(root.left);
+  int right = getHeight(root.right);
+  
+  return Math.max(left, height) + 1;
+}
+```
+
+
+
+#### Q5.2 Store the number of nodes in each node's left-subtree
+
+* **Way of thinking(Tricks)** 
+
+  1. What do you expect from your lchild/ rchild? (usually it is the return type of recursion function)
+
+     * total number of nodes in my left substree
+     * total number of nodes in my right substree 
+
+
+
+    2. What do you want to do in the current layer?
+
+     * store leftNum in current.lChildNum
+
+    3. What do you want to report to your parent?
+
+     * return leftNum + rightNum + 1;
+
+
+```java
+class TreeNode {
+  int value;
+  TreeNode left;
+  TreeNode right;
+  int lChildNum;
+}
+
+public int numLeftTree(TreeNode root) {
+  //base case
+  if (root == null){
+    return 0;
+  }
+  
+  // 
+  int left = numLeftTree(root.left);
+  int right = numLeftTree(root.right);
+  root.lChildNum = left;
+  return left + right + 1;
+}
+```
+
+#### Q5.3 Find the node with max difference in the totoal number of descendents in its left subtree and right subtree
+
+Way of thinking:
+
+1. what do you expect from your lchild/ rchld? (usually its the return type of the recursion function)
+
+   * left: number of descendents of left subtree
+   * right: number of descendents of right subtree
+
+2. what do you want to do in the current layer?
+
+   * check whether Math.abs(left - right) > global_max_diff
+   * if so, update it to global_max_diff
+
+3. what do you want to report to your parent?
+
+   * return 1+left+right
+
+   ```java
+   public int maxDiff (TreeNode root, int[] maxDiff) {
+     // base case
+     if (root == null) {
+       return 0;
+     }
+     
+     // recursion rule
+     int left = maxDiff(root.left);
+     int right = maxDiff(root.right);
+     if (Math.abs(left - right) > maxDiff[0]) {
+       maxDiff[0] = Math.abs(left - right);
+     }
+     return left + right + 1;
+   }
+   ```
+
+   ​
+
